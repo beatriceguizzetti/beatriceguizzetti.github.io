@@ -8,6 +8,10 @@
 	<title>Beatrice Guizzetti</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -28,7 +32,7 @@
 	    <a href="about.HTML">about</a>
 			&mdash;
 	    <a href="contact.HTML">contact</a>
-</h3>
+</h3></nav>
 
 <!-- /* title */ -->
 <h4>
@@ -36,18 +40,11 @@
 </h4>
 
 <!-- /* images */ -->
-<img src="img/IMG_7153.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-<img src="img/IMG_7162.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-<img src="img/IMG_7177.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-<img src="img/IMG_7192.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-<img src="img/IMG_7196.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-<img src="img/IMG_7202.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-<img src="img/IMG_7203.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-<img src="img/IMG_7205.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-<img src="img/IMG_7206.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-<img src="img/IMG_7207.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
-
-<p>
+<div class="photo-container">
+	<a href="#" id="previous" class="previous round">&#8249;</a>
+	<img id="naturemorte" src="img/IMG_7153.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
+	<a href="#" id="next" class="next round">&#8250;</a>
+	<p>
 	Sublimer, verbe transitif :
 	purifier, transposer en id&eacutealisant.
 	Action d&#039&eacutelever le niveau de quelque chose en soulignant
@@ -62,11 +59,69 @@ ou le pot de farine. &Agrave; travers une mise en sc&egravene,
 un &eacuteclairage, et des couleurs harmonieuses,
 un objet du quotidien peut devenir une &#339;uvre d&#039art.
 </p>
+</div>
+<!-- <img src="img/IMG_7162.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
+<img src="img/IMG_7177.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
+<img src="img/IMG_7192.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
+<img src="img/IMG_7196.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
+<img src="img/IMG_7202.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
+<img src="img/IMG_7203.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
+<img src="img/IMG_7205.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
+<img src="img/IMG_7206.jpg" class="naturemorte" alt="Une jolie corbeille de Windows">
+<img src="img/IMG_7207.jpg" class="naturemorte" alt="Une jolie corbeille de Windows"> -->
+
+
 
 
 <!-- /* fleches */ -->
-<i class="arrow right"></i></p>
-<i class="arrow left"></i></p>
+<!-- <i class="arrow right"></i>
+<i class="arrow left"></i>
+ -->
 
-<a href="#" class="previous round">&#8249;</a>
-<a href="#" class="next round">&#8250;</a>
+
+<script>
+	var images = [
+		{
+			src: "img/IMG_7153.jpg",
+			alt: "Une jolie corbeille de Windows"
+		},
+		{
+			src: "img/IMG_7162.jpg",
+			alt: "Une jolie corbeille de Windows"
+		},
+		{
+			src: "img/IMG_7177.jpg",
+			alt: "Une jolie corbeille de Windows"
+		}
+	];
+
+	var imgtag = $('#naturemorte');
+	var currentImage = 0;
+
+	$('.round').click(function(e) {
+		e.preventDefault();
+
+		if ($(this).attr('id') == 'previous') {
+			currentImage--;
+
+			if (currentImage < 0) {
+				currentImage = images.length - 1;
+			}
+		} else if ($(this).attr('id') == 'next') {
+			currentImage++;
+
+			if (currentImage > (images.length - 1)) {
+				currentImage = 0;
+			}
+		}
+
+
+		var newImage = images[currentImage];
+
+		imgtag.attr('src', newImage.src);
+		imgtag.attr('alt', newImage.alt);
+	});
+</script>
+
+</body>
+</html>

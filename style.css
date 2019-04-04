@@ -158,3 +158,22 @@ p{
 	color: black;
 	opacity: 50%;
 }
+
+.photo-container {
+	display: flex;
+    align-items: center;
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.photo-container .round {
+	font-size: 4em;
+	text-decoration: none !important;
+}
+
+.photo-container p {
+/*	position: absolute;
+	bottom: 0;
+	right: 0;*/
+}
